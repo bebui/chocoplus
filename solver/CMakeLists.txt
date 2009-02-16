@@ -1,0 +1,4 @@
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -pedantic -Wno-long-long")
+ 
+ SET(LIB_FILES solver.cc)
+ ADD_LIBRARY(solver ${LIB_FILES})

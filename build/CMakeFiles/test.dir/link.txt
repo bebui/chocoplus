@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -headerpad_max_install_names -fPIC CMakeFiles/test.dir/test.cc.o  -o test  memory/libmemory.a solver/libsolver.a 

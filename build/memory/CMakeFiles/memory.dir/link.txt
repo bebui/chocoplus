@@ -1,0 +1,2 @@
+/usr/bin/ar cr libmemory.a  CMakeFiles/memory.dir/environment.cc.o CMakeFiles/memory.dir/storedlong.cc.o CMakeFiles/memory.dir/storedint.cc.o
+/usr/bin/ranlib libmemory.a
