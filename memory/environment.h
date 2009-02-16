@@ -34,7 +34,7 @@ protected:
 public:
   virtual ~StoredElement() {};
   StoredElement() : _lastsave(0) {};
-  virtual void restore(int) = 0;
+  virtual void restore(int){} 
   
 };
 
