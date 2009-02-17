@@ -2,7 +2,6 @@
 #include "../memory/storedint.h"
 #include <iostream>
 
-Environment Solver::_env;
 Solver::Solver()  {}
 
 void Solver::push()

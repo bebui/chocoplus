@@ -3,112 +3,28 @@
 #include "../solver/solver.h"
 #include <iostream>
 
-unsigned long operator+(unsigned long l, StoredLong b)
+
+StoredLong::StoredLong(Environment& __env ,uint64_t val) : StoredElement(__env),_current(val) {}
+
+
+StoredLong& StoredLong::operator=(const StoredLong& b)
 {
-  return l+b.get();
-}
-unsigned long operator+(StoredLong b, unsigned long l)
-{
-  return l+b.get();
-}
-unsigned long operator+(StoredLong a, StoredLong b)
-{
-  return a.get()+b.get();
+  _current = b._current;
+  _env = b._env;
+  _lastsave = b._lastsave;
+  return *(this);
 }
 
-unsigned long operator|(unsigned long l, StoredLong b)
-{
-  return l|b.get();
-}
-unsigned long operator|(StoredLong b, unsigned long l)
-{
-  return l|b.get();
-}
-unsigned long operator|(StoredLong a, StoredLong b)
-{
-  return a.get()|b.get();
-}
 
-unsigned long operator&(unsigned long l, StoredLong b)
-{
-  return l&b.get();
-}
-unsigned long operator&(StoredLong b, unsigned long l)
-{
-  return l&b.get();
-}
-unsigned long operator&(StoredLong a, StoredLong b)
-{
-  return a.get()&b.get();
-}
 
-unsigned long operator^(unsigned long l, StoredLong b)
-{
-  return l^b.get();
-}
-unsigned long operator^(StoredLong b, unsigned long l)
-{
-  return l^b.get();
-}
-unsigned long operator^(StoredLong a, StoredLong b)
-{
-  return a.get()^b.get();
-}
-
-bool operator>(unsigned long l, StoredLong b)
-{
-  return l>b.get();
-}
-bool operator>(StoredLong b, unsigned long l)
-{
-  return l<b.get();
-}
-bool operator>(StoredLong a, StoredLong b)
-{
-  return a.get()>b.get();
-}
-
-bool operator<(unsigned long l, StoredLong b)
-{
-  return l<b.get();
-}
-bool operator<(StoredLong b, unsigned long l)
-{
-  return l>b.get();
-}
-bool operator<(StoredLong a, StoredLong b)
-{
-  return a.get()<b.get();
-}
-
-bool operator==(unsigned long l, StoredLong b)
-{
-  return l==b.get();
-}
-bool operator==(StoredLong b, unsigned long l)
-{
-  return l==b.get();
-}
-bool operator==(StoredLong a, StoredLong b)
-{
-  return a.get()==b.get();
-}
-
-StoredLong::StoredLong(int val) : StoredElement(),_current(val) 
-{
-  //std::cout << "buibiu" << std::endl;
-  Solver::getEnvironment().addElement(this);
-
-}
-
-unsigned long StoredLong::get()
+uint64_t StoredLong::get()
 {
   return _current;
 }
 
-void StoredLong::set(unsigned long val)
+void StoredLong::set(uint64_t val)
 {
-  int widx = Solver::getEnvironment().getIndex();
+  int widx = _env.getIndex();
   if (widx > _lastsave)
   {
     _trail.push(_current);
@@ -132,7 +48,7 @@ void StoredLong::restore(int widx)
   }
 }
 
-void StoredLong::add(unsigned long val)
+void StoredLong::add(uint64_t val)
 {
   set(val+_current);
 }

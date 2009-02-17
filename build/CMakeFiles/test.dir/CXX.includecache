@@ -9,6 +9,18 @@
 /Users/julien/These/conneries/choco++/memory/environment.h
 vector
 -
+iostream
+-
+
+/Users/julien/These/conneries/choco++/memory/storedbitset.h
+environment.h
+/Users/julien/These/conneries/choco++/memory/environment.h
+storedlong.h
+/Users/julien/These/conneries/choco++/memory/storedlong.h
+vector
+-
+iostream
+-
 
 /Users/julien/These/conneries/choco++/memory/storedint.h
 stack
@@ -25,6 +37,8 @@ environment.h
 /Users/julien/These/conneries/choco++/solver/../memory/environment.h
 vector
 -
+iostream
+-
 
 /Users/julien/These/conneries/choco++/solver/solver.h
 ../memory/environment.h
@@ -35,6 +49,8 @@ memory/storedint.h
 /Users/julien/These/conneries/choco++/memory/storedint.h
 memory/storedlong.h
 /Users/julien/These/conneries/choco++/memory/storedlong.h
+memory/storedbitset.h
+/Users/julien/These/conneries/choco++/memory/storedbitset.h
 memory/environment.h
 /Users/julien/These/conneries/choco++/memory/environment.h
 solver/solver.h

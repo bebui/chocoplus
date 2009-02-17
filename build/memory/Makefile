@@ -136,6 +136,30 @@ environment.cc.s:
 	cd /Users/julien/These/conneries/choco++/build && $(MAKE) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/environment.cc.s
 .PHONY : environment.cc.s
 
+storedbitset.o: storedbitset.cc.o
+.PHONY : storedbitset.o
+
+# target to build an object file
+storedbitset.cc.o:
+	cd /Users/julien/These/conneries/choco++/build && $(MAKE) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/storedbitset.cc.o
+.PHONY : storedbitset.cc.o
+
+storedbitset.i: storedbitset.cc.i
+.PHONY : storedbitset.i
+
+# target to preprocess a source file
+storedbitset.cc.i:
+	cd /Users/julien/These/conneries/choco++/build && $(MAKE) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/storedbitset.cc.i
+.PHONY : storedbitset.cc.i
+
+storedbitset.s: storedbitset.cc.s
+.PHONY : storedbitset.s
+
+# target to generate assembly for a file
+storedbitset.cc.s:
+	cd /Users/julien/These/conneries/choco++/build && $(MAKE) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/storedbitset.cc.s
+.PHONY : storedbitset.cc.s
+
 storedint.o: storedint.cc.o
 .PHONY : storedint.o
 
@@ -196,6 +220,9 @@ help:
 	@echo "... environment.o"
 	@echo "... environment.i"
 	@echo "... environment.s"
+	@echo "... storedbitset.o"
+	@echo "... storedbitset.i"
+	@echo "... storedbitset.s"
 	@echo "... storedint.o"
 	@echo "... storedint.i"
 	@echo "... storedint.s"

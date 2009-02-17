@@ -2,6 +2,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/memory.dir/environment.cc.o"
   "CMakeFiles/memory.dir/storedlong.cc.o"
   "CMakeFiles/memory.dir/storedint.cc.o"
+  "CMakeFiles/memory.dir/storedbitset.cc.o"
   "libmemory.pdb"
   "libmemory.a"
   "libmemory.dylib"

@@ -5,6 +5,11 @@ memory/CMakeFiles/memory.dir/environment.cc.o: ../memory/environment.cc
 memory/CMakeFiles/memory.dir/environment.cc.o: ../memory/environment.h
 memory/CMakeFiles/memory.dir/environment.cc.o: ../memory/storedint.h
 
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: ../memory/environment.h
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: ../memory/storedbitset.cc
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: ../memory/storedbitset.h
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: ../memory/storedlong.h
+
 memory/CMakeFiles/memory.dir/storedint.cc.o: ../memory/../solver/../memory/environment.h
 memory/CMakeFiles/memory.dir/storedint.cc.o: ../memory/../solver/solver.h
 memory/CMakeFiles/memory.dir/storedint.cc.o: ../memory/environment.h

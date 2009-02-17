@@ -121,11 +121,36 @@ memory/CMakeFiles/memory.dir/storedint.cc.o.provides: memory/CMakeFiles/memory.d
 memory/CMakeFiles/memory.dir/storedint.cc.o.provides.build: memory/CMakeFiles/memory.dir/storedint.cc.o
 .PHONY : memory/CMakeFiles/memory.dir/storedint.cc.o.provides.build
 
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: memory/CMakeFiles/memory.dir/flags.make
+memory/CMakeFiles/memory.dir/storedbitset.cc.o: ../memory/storedbitset.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/julien/These/conneries/choco++/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object memory/CMakeFiles/memory.dir/storedbitset.cc.o"
+	cd /Users/julien/These/conneries/choco++/build/memory && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/memory.dir/storedbitset.cc.o -c /Users/julien/These/conneries/choco++/memory/storedbitset.cc
+
+memory/CMakeFiles/memory.dir/storedbitset.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/memory.dir/storedbitset.cc.i"
+	cd /Users/julien/These/conneries/choco++/build/memory && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/julien/These/conneries/choco++/memory/storedbitset.cc > CMakeFiles/memory.dir/storedbitset.cc.i
+
+memory/CMakeFiles/memory.dir/storedbitset.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/memory.dir/storedbitset.cc.s"
+	cd /Users/julien/These/conneries/choco++/build/memory && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/julien/These/conneries/choco++/memory/storedbitset.cc -o CMakeFiles/memory.dir/storedbitset.cc.s
+
+memory/CMakeFiles/memory.dir/storedbitset.cc.o.requires:
+.PHONY : memory/CMakeFiles/memory.dir/storedbitset.cc.o.requires
+
+memory/CMakeFiles/memory.dir/storedbitset.cc.o.provides: memory/CMakeFiles/memory.dir/storedbitset.cc.o.requires
+	$(MAKE) -f memory/CMakeFiles/memory.dir/build.make memory/CMakeFiles/memory.dir/storedbitset.cc.o.provides.build
+.PHONY : memory/CMakeFiles/memory.dir/storedbitset.cc.o.provides
+
+memory/CMakeFiles/memory.dir/storedbitset.cc.o.provides.build: memory/CMakeFiles/memory.dir/storedbitset.cc.o
+.PHONY : memory/CMakeFiles/memory.dir/storedbitset.cc.o.provides.build
+
 # Object files for target memory
 memory_OBJECTS = \
 "CMakeFiles/memory.dir/environment.cc.o" \
 "CMakeFiles/memory.dir/storedlong.cc.o" \
-"CMakeFiles/memory.dir/storedint.cc.o"
+"CMakeFiles/memory.dir/storedint.cc.o" \
+"CMakeFiles/memory.dir/storedbitset.cc.o"
 
 # External object files for target memory
 memory_EXTERNAL_OBJECTS =
@@ -133,6 +158,7 @@ memory_EXTERNAL_OBJECTS =
 memory/libmemory.a: memory/CMakeFiles/memory.dir/environment.cc.o
 memory/libmemory.a: memory/CMakeFiles/memory.dir/storedlong.cc.o
 memory/libmemory.a: memory/CMakeFiles/memory.dir/storedint.cc.o
+memory/libmemory.a: memory/CMakeFiles/memory.dir/storedbitset.cc.o
 memory/libmemory.a: memory/CMakeFiles/memory.dir/build.make
 memory/libmemory.a: memory/CMakeFiles/memory.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libmemory.a"
@@ -146,6 +172,7 @@ memory/CMakeFiles/memory.dir/build: memory/libmemory.a
 memory/CMakeFiles/memory.dir/requires: memory/CMakeFiles/memory.dir/environment.cc.o.requires
 memory/CMakeFiles/memory.dir/requires: memory/CMakeFiles/memory.dir/storedlong.cc.o.requires
 memory/CMakeFiles/memory.dir/requires: memory/CMakeFiles/memory.dir/storedint.cc.o.requires
+memory/CMakeFiles/memory.dir/requires: memory/CMakeFiles/memory.dir/storedbitset.cc.o.requires
 .PHONY : memory/CMakeFiles/memory.dir/requires
 
 memory/CMakeFiles/memory.dir/clean:

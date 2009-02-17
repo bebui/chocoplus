@@ -7,53 +7,23 @@
 class StoredLong : public StoredElement
 {
 private:
-  unsigned long _current;
-  std::stack<long> _trail;
+  uint64_t _current;
+  std::stack<uint64_t> _trail;
   std::stack<int> _worlds;
     
 public:
   
-//  StoredLong(unsigned long val = 0);
-  StoredLong(int val = 0);
+  StoredLong(Environment& __env,uint64_t val = 0);
   
-  unsigned long get();
-  void set(unsigned long);
-  void add(unsigned long);
+  uint64_t get();
+  void set(uint64_t);
+  void add(uint64_t);
   void restore(int);
   
-  void operator=(unsigned long a) {
-    set(a);
-  }
+  StoredLong& operator=(const StoredLong&);
        
 };
 
-unsigned long operator+(unsigned long,StoredLong);
-unsigned long operator+(StoredLong,unsigned long);
-unsigned long operator+(StoredLong,StoredLong);
-
-unsigned long operator|(unsigned long,StoredLong);
-unsigned long operator|(StoredLong,unsigned long);
-unsigned long operator|(StoredLong,StoredLong);
-
-unsigned long operator^(unsigned long,StoredLong);
-unsigned long operator^(StoredLong,unsigned long);
-unsigned long operator^(StoredLong,StoredLong);
-
-unsigned long operator&(unsigned long,StoredLong);
-unsigned long operator&(StoredLong,unsigned long);
-unsigned long operator&(StoredLong,StoredLong);
-
-bool operator>(unsigned long,StoredLong);
-bool operator>(StoredLong,unsigned long);
-bool operator>(StoredLong,StoredLong);
-
-bool operator<(unsigned long,StoredLong);
-bool operator<(StoredLong,unsigned long);
-bool operator<(StoredLong,StoredLong);
-
-bool operator==(unsigned long,StoredLong);
-bool operator==(StoredLong,unsigned long);
-bool operator==(StoredLong,StoredLong);
 
 
 #endif

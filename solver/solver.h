@@ -5,11 +5,11 @@
 class Solver
 {
 private:
-  static Environment _env;
+  Environment _env;
   //vector<Constraint> _constraints;
   
 public:
-  static Environment& getEnvironment() { return _env; }
+  Environment& getEnvironment() { return _env; }
   void push();
   void pop();
   Solver();
