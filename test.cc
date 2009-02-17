@@ -1,10 +1,9 @@
 #include "memory/storedint.h"
 #include "memory/storedlong.h"
-
+#include "memory/storedbitset.h"
 #include "memory/environment.h"
 #include "solver/solver.h"
 #include <iostream>
-#include <boost/dynamic_bitset.hpp>
 
 
 using namespace std;
@@ -15,28 +14,25 @@ int main()
   
   
   
-  
-  boost::dynamic_bitset<StoredLong> x(5); // all 0's by default
-  x[0] = 1;
-  x[1] = 1;
-  x[4] = 1;
-  for (boost::dynamic_bitset<StoredLong>::size_type i = 0; i < x.size(); ++i)
-    std::cout << x[i];
-  std::cout << "\n";
-  std::cout << x << "\n";
+  Environment& env = s.getEnvironment();
   
   
   
   
+  StoredBitSet bui(env,80);
+  s.push();
+  for (int i = 40 ; i < 70 ; i++) bui.clear(i);
+  bui.print();
+  std::cout << bui.prev_clear(78) << std::endl;
+  
+  s.pop();
+  bui.print();
   
   
-  StoredInt si(10);
-  StoredLong sl(9999394);
-  StoredLong sl2(6);
-  StoredLong sl3;
+  StoredInt si(env,10);
+  StoredLong sl(env,9999394);
+  StoredLong sl2(env,6);
   
-  sl3 = sl|sl2;
-  cout << ((StoredLong (12)) > 0) << endl;
   s.push();
   si.set(255);
   sl.set(245245245);
