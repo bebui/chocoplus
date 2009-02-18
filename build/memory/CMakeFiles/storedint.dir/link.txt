@@ -1,2 +1,0 @@
-/usr/bin/ar cr libstoredint.a  CMakeFiles/storedint.dir/storedint.cc.o
-/usr/bin/ranlib libstoredint.a

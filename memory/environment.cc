@@ -4,6 +4,16 @@
 
 Environment::Environment(): _currentworld(0){}
 
+Environment::~Environment()
+{
+  for 
+    (std::vector<StoredElement*>::iterator it = _elems.begin(); it!=_elems.end(); ++it)
+    {
+      //std::cout << "bui" << std::endl;
+      //delete *it; 
+    }
+}
+
 void Environment::push()
 {
   _currentworld++;

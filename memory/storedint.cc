@@ -2,7 +2,7 @@
 #include "environment.h"
 #include "../solver/solver.h"
 #include <iostream>
-StoredInt::StoredInt(Environment& __env,int val) : StoredElement(__env),_current(val) {}
+StoredInt::StoredInt(Environment* __env,int val) : StoredElement(__env),_current(val) {}
 
 int StoredInt::get()
 {
@@ -11,7 +11,7 @@ int StoredInt::get()
 
 void StoredInt::set(int val)
 {
-  int widx =_env.getIndex();
+  int widx =_env->getIndex();
   if (widx > _lastsave)
   {
     _trail.push(_current);

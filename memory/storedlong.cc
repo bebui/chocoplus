@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-StoredLong::StoredLong(Environment& __env ,uint64_t val) : StoredElement(__env),_current(val) {}
+StoredLong::StoredLong(Environment* __env ,uint64_t val) : StoredElement(__env),_current(val) {}
 
 
 StoredLong& StoredLong::operator=(const StoredLong& b)
@@ -12,7 +12,7 @@ StoredLong& StoredLong::operator=(const StoredLong& b)
   _current = b._current;
   _env = b._env;
   _lastsave = b._lastsave;
-  return *(this);
+  return *this;
 }
 
 
@@ -24,7 +24,7 @@ uint64_t StoredLong::get()
 
 void StoredLong::set(uint64_t val)
 {
-  int widx = _env.getIndex();
+  int widx = _env->getIndex();
   if (widx > _lastsave)
   {
     _trail.push(_current);

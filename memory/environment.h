@@ -15,6 +15,7 @@ private:
 public:
   
   Environment();
+  ~Environment();
   
   void push();
   void pop(int w);
@@ -27,13 +28,13 @@ public:
 class StoredElement
 {
 protected:
-  Environment& _env;
+  Environment* _env;
   int _lastsave;
   
   
 public:
   virtual ~StoredElement() {};
-  StoredElement(Environment& __env) : _env(__env),_lastsave(0) {__env.addElement(this);}
+  StoredElement(Environment* __env) : _env(__env),_lastsave(0) {__env->addElement(this);}
   virtual void restore(int){} 
   
 };

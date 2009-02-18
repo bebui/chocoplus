@@ -13,7 +13,7 @@ private:
     
 public:
   
-  StoredLong(Environment& __env,uint64_t val = 0);
+  StoredLong(Environment* __env,uint64_t val = 0);
   
   uint64_t get();
   void set(uint64_t);

@@ -22,17 +22,24 @@ private:
   
 public:
   
-  StoredBitSet(Environment&,size_t);
+  StoredBitSet(Environment*,size_t);
   ~StoredBitSet();
   
   
   void set(size_t);
+  void set(size_t,size_t);
+  
   void clear(size_t);
+  void clear(size_t,size_t);
+  
+  void clear();
+  
   bool get(size_t); 
   int next_set(size_t);
   int prev_set(size_t);
   int next_clear(size_t);
   int prev_clear(size_t);
+  int cardinality();
   
   void print();
  

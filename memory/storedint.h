@@ -14,7 +14,7 @@ private:
     
 public:
   
-  StoredInt(Environment& __env,int val = 0);
+  StoredInt(Environment* __env,int val = 0);
   
   int get();
   void set(int);

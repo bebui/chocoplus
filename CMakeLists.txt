@@ -3,5 +3,6 @@ project (CHOCOC)
 
 add_subdirectory (memory)
 add_subdirectory (solver)
+add_subdirectory (variable)
 ADD_EXECUTABLE(test test.cc)
-TARGET_LINK_LIBRARIES(test memory solver)
+TARGET_LINK_LIBRARIES(test memory solver variable)
