@@ -14,7 +14,7 @@ private:
   
 public:
   ~Solver();
-  Environment& getEnvironment() { return _env; }
+  Environment* getEnvironment() { return &_env; }
   void push();
   void pop();
   Solver();
