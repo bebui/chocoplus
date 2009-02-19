@@ -11,6 +11,20 @@ int IntVarObj::inf()
   return _dom.inf();
 }
 
+int IntVarObj::next(int __val)
+{
+  return _dom.next(__val);
+}
+int IntVarObj::prev(int __val)
+{
+  return _dom.prev(__val);
+}
+
+bool IntVarObj::contains(int __val)
+{
+  return _dom.contains(__val);
+}
+
 void IntVarObj::restrict(int __val)
 {
   update_inf(__val);
@@ -53,6 +67,20 @@ int IntVar::sup()
 int IntVar::inf()
 {
   return _repr->inf();
+}
+
+int IntVar::next(int __val)
+{
+  return _repr->next(__val);
+}
+int IntVar::prev(int __val)
+{
+  return _repr->prev(__val);
+}
+
+bool IntVar::contains(int __val)
+{
+  return _repr->contains(__val);
 }
 
 void IntVar::restrict(int __val)

@@ -20,6 +20,12 @@ public:
   void remove(int);
   void update_inf(int);
   void update_sup(int);
+  
+  int next(int);
+  int prev(int);
+  bool contains(int);
+  
+  
   size_t cardinality();
   std::string getName() { return _name;}
   std::string str();
@@ -42,6 +48,9 @@ public:
   size_t cardinality();
   std::string getName() { return _repr->getName();}
   std::string str();
+  int next(int);
+  int prev(int);
+  bool contains(int);
    
   
 };

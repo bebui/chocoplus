@@ -55,12 +55,40 @@ void IntDomain::update_sup(int __sup)
 
 int IntDomain::sup()
 {
-  return _inf.get();
+  return _sup.get();
 }
 
 int IntDomain::inf()
 {
-  return _sup.get();
+  return _inf.get();
+}
+
+int IntDomain::next(int __val)
+{
+  if (__val >= inf() && __val <= sup())
+  {
+    int __idx = __val - _offset;
+    int __next = _repr.next_set(__idx);
+    if (__next != -1) 
+      return __next+_offset;
+  }
+  return INT_MIN;
+}
+int IntDomain::prev(int __val)
+{
+  if (__val >= inf() && __val <= sup())
+  {
+    int __idx = __val - _offset;
+    int __prev = _repr.prev_set(__idx);
+    if (__prev != -1) 
+      return __prev+_offset;
+  }
+  return INT_MIN;
+}
+
+bool IntDomain::contains(int __val)
+{
+  return _repr.get(__val-_offset);
 }
 
 bool IntDomain::is_singleton()

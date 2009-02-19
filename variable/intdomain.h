@@ -7,6 +7,7 @@
 #include <string>  
 #include <iostream>  
 #include <sstream>
+#include <limits.h>
 
 class Contradiction
 {
@@ -37,6 +38,10 @@ public:
   
   int sup();
   int inf();
+  int next(int);
+  int prev(int);
+  bool contains(int);
+  
   bool is_singleton();
   bool is_empty();
   size_t cardinality();
