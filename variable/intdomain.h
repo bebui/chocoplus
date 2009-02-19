@@ -3,7 +3,7 @@
 
 #include "../memory/environment.h"
 #include "../memory/storedbitset.h"
-#include "../memory/storedint.h"
+#include "../memory/stored.h"
 #include <string>  
 #include <iostream>  
 #include <sstream>
@@ -22,8 +22,8 @@ class IntDomain
 {
   
 private: 
-  StoredInt<int> _inf;
-  StoredInt<int> _sup;
+  Stored<int> _inf;
+  Stored<int> _sup;
   StoredBitSet _repr;
   int _offset;
   
