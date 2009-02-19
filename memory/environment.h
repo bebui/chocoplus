@@ -33,9 +33,9 @@ protected:
   
   
 public:
-  ~StoredElement() {};
+  virtual ~StoredElement() {};
   StoredElement(Environment* __env) : _env(__env),_lastsave(0) {__env->addElement(this);}
-  void restore(int){} 
+  virtual void restore(int) =0; 
   
 };
 

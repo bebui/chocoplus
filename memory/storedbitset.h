@@ -6,7 +6,7 @@
 #include <vector>
 #include <iostream>
 
-class StoredBitSet : public StoredElement
+class StoredBitSet 
 {
 private:
   const static int _ADDR_BITS_PER_WORD = 6;

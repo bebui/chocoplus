@@ -36,6 +36,7 @@ void StoredLong::set(uint64_t val)
 
 void StoredLong::restore(int widx)
 {
+  //std::cout << "buiL" << std::endl;
   if (widx < _lastsave)
   {
     while (_worlds.top() > widx)
