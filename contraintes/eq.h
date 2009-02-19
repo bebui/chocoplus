@@ -6,22 +6,18 @@
 #include <vector>
 #include "contraintes.h"
 
-class Eq : public ConstraintObj
+
+class Eq : public ConstraintObj 
 {
 private:
   IntVar _a;
   IntVar _b;
   
 public:
-  Eq(std::vector<IntVar>);
+  Eq(Solver*,std::vector<IntVar>);
   void propagate();
   
 };
-
-
-
-
-
 
 
 #endif

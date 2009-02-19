@@ -2,20 +2,25 @@
 #define _CONSTRAINT
 
 #include <vector>
+#include "../memory/storedbool.h"
 #include "../variable/intvar.h"
+#include "../solver/solver.h"
+
 
 class ConstraintObj
 {
-private:
+protected:
+  Solver* _s;
   std::vector<IntVar> _vars;
+  StoredBool _entailed;
   
 public:
   virtual ~ConstraintObj() {};
-  ConstraintObj(std::vector<IntVar> __vars) : _vars(__vars) {}
+  ConstraintObj(Solver* __s,std::vector<IntVar> __vars) : _s(__s), _vars(__vars),_entailed(__s->getEnvironment(),false) {}
   
   virtual void propagate() {};
-  virtual bool entailed() { return 0;}
-  
+  virtual bool entailed() { return _entailed.get();}
+  Solver* getSolver(){return _s;}
 };
 
 class Constraint
