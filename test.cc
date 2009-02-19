@@ -1,5 +1,4 @@
 #include "memory/storedint.h"
-#include "memory/storedlong.h"
 #include "memory/storedbitset.h"
 #include "variable/intdomain.h"
 #include "memory/environment.h"

@@ -4,14 +4,14 @@ StoredBitSet::StoredBitSet(Environment* __env, size_t __size) : _size(__size)
 {
   for (size_t __i = 0 ; __i < (__size / _BITS_PER_WORD) ; __i++)
   {
-    _words.push_back(new StoredLong(__env,0xffffffffffffffffLL));
+    _words.push_back(new Stored64(__env,0xffffffffffffffffLL));
    // std::cout << " 1 NEW " << std::endl;
   }
   uint64_t l = 0LL;
   for (size_t __i = 0 ; __i < __size % _BITS_PER_WORD ; __i++)
     l |= 1LL << __i;
   
-  _words.push_back(new StoredLong(__env,l));
+  _words.push_back(new Stored64(__env,l));
   //std::cout << " 1 NEW " << std::endl;
   
 }
@@ -45,7 +45,7 @@ void StoredBitSet::set(size_t __from, size_t __to)
 
 void StoredBitSet::clear()
 {
-  for (std::vector<StoredLong*>::iterator it = _words.begin() ; it != _words.end();++it)
+  for (std::vector<Stored64*>::iterator it = _words.begin() ; it != _words.end();++it)
     (*it)->set(0);
 }
 
@@ -161,7 +161,7 @@ int StoredBitSet::next_clear(size_t __idx) {
 int StoredBitSet::cardinality()
 {
   int ret = 0;
-  for (std::vector<StoredLong*>::iterator it = _words.begin() ; it != _words.end();++it)
+  for (std::vector<Stored64*>::iterator it = _words.begin() ; it != _words.end();++it)
     ret += __builtin_popcountll((*it)->get());
   
   return ret;

@@ -2,7 +2,7 @@
 #define _SBIT
 
 #include "environment.h"
-#include "storedlong.h"
+#include "storedint.h"
 #include <vector>
 #include <iostream>
 
@@ -14,8 +14,10 @@ private:
   const static int _BIT_INDEX_MASK = _BITS_PER_WORD - 1;
   
   const static uint64_t _WORD_MASK = 0xffffffffffffffffLL;
+
+  typedef StoredInt<uint64_t> Stored64;
   
-  std::vector<StoredLong*> _words;
+  std::vector<StoredInt<uint64_t>*> _words;
   size_t _size;
   
  

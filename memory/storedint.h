@@ -1,26 +1,55 @@
-#ifndef _STOREDINT
-#define _STOREDINT
-
+#ifndef _STOREDT
+#define _STOREDT
 
 #include <stack>
 #include "environment.h"
+template <class T>
 class StoredInt : public StoredElement
 {
-private:
-  const static int BUI = 0 << 6;
-  int _current;
-  std::stack<int> _trail;
-  std::stack<int> _worlds;
-    
-public:
-  
-  StoredInt(Environment* __env,int val = 0);
-  
-  int get();
-  void set(int);
-  void add(int);
-  void restore(int);
-  
+    private:
+        T _current;
+        std::stack<T> _trail;
+        std::stack<int> _worlds;
+
+    public:
+
+        StoredInt(Environment* __env,T val = 0) : StoredElement(__env),_current(val) {}
+
+        T get()
+        {
+            return _current;
+        }
+
+        void set(T val)
+        {
+            int widx =_env->getIndex();
+            if (widx > _lastsave)
+            {
+                _trail.push(_current);
+                _worlds.push(_lastsave);
+                _lastsave = widx;
+            }
+            _current = val;
+        }
+
+        void restore(int widx)
+        {
+            if (widx < _lastsave)
+            {
+                while (_worlds.top() > widx)
+                {
+                    _worlds.pop();
+                    _trail.pop();
+                }
+                _current = _trail.top(); _trail.pop();
+                _lastsave = _worlds.top(); _worlds.pop();
+            }
+        }
+
+        void add(T val)
+        {
+            set(val+_current);
+        }
 };
 
 #endif
