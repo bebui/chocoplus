@@ -3,6 +3,8 @@
 
 #include "../memory/environment.h"
 #include "../variable/intvar.h"
+#include "../contraintes/contraintes.h"
+#include "../contraintes/eq.h"
 #include <vector>
 #include <string>
 class Solver
@@ -10,16 +12,19 @@ class Solver
 private:
   Environment _env;
   std::vector<IntVarObj*> _vars;
-  //vector<Constraint> _constraints;
+  std::vector<ConstraintObj*> _cons;
   
 public:
   ~Solver();
   Environment* getEnvironment() { return &_env; }
   void push();
   void pop();
+  void post(Constraint);
+  
   Solver();
   bool solve();
   IntVar make_var(std::string,int,int);
+  Constraint eq(IntVar,IntVar);
 };
 
 
