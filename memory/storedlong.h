@@ -1,9 +1,10 @@
+#include <stack>
+#include "environment.h"
+
 #ifndef _STOREDLONG
 #define _STOREDLONG
 
 
-#include <stack>
-#include "environment.h"
 class StoredLong : public StoredElement
 {
 private:

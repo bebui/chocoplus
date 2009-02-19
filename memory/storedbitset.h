@@ -2,10 +2,11 @@
 #define _SBIT
 
 #include "environment.h"
-#include "storedlong.h"
+//#include "storedlong.h"
 #include <vector>
 #include <iostream>
 
+class StoredLong;
 class StoredBitSet 
 {
 private:
