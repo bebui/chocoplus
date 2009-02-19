@@ -1,6 +1,4 @@
 #include "environment.h"
-#include "storedint.h"
-#include <iostream>
 
 Environment::Environment(): _currentworld(0){}
 

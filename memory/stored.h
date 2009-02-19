@@ -4,7 +4,7 @@
 #include <stack>
 #include "environment.h"
 template <class T>
-class StoredInt : public StoredElement
+class Stored : public StoredElement
 {
     private:
         T _current;
@@ -13,7 +13,7 @@ class StoredInt : public StoredElement
 
     public:
 
-        StoredInt(Environment* __env,T val = 0) : StoredElement(__env),_current(val) {}
+        Stored(Environment* __env,T val = 0) : StoredElement(__env),_current(val) {}
 
         T get()
         {

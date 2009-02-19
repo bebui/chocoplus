@@ -2,11 +2,10 @@
 #define _SBIT
 
 #include "environment.h"
-#include "storedint.h"
+#include "stored.h"
 #include <vector>
 #include <iostream>
 
-class StoredLong;
 class StoredBitSet 
 {
 private:
@@ -16,9 +15,9 @@ private:
   
   const static uint64_t _WORD_MASK = 0xffffffffffffffffLL;
 
-  typedef StoredInt<uint64_t> Stored64;
+  typedef Stored<uint64_t> Stored64;
   
-  std::vector<StoredInt<uint64_t>*> _words;
+  std::vector<Stored<uint64_t>*> _words;
   size_t _size;
   
  
