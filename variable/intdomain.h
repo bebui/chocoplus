@@ -22,8 +22,8 @@ class IntDomain
 {
   
 private: 
-  StoredInt _inf;
-  StoredInt _sup;
+  StoredInt<int> _inf;
+  StoredInt<int> _sup;
   StoredBitSet _repr;
   int _offset;
   
