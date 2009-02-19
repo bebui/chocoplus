@@ -4,7 +4,7 @@
 
 #include <limits.h>
 #include <vector>
-#include "contraintes.h"
+#include "constraint.h"
 #include "../memory/storedbool.h"
 
 class Neq : public ConstraintObj
