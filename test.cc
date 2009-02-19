@@ -1,4 +1,4 @@
-#include "memory/storedint.h"
+#include "memory/stored.h"
 #include "memory/storedbitset.h"
 #include "variable/intdomain.h"
 #include "memory/environment.h"
@@ -13,6 +13,7 @@ int main()
   
   Solver s;
   
+  s.push();
   IntVar a = s.make_var("a",10,20);
   IntVar b = s.make_var("b",5,11);
   
@@ -22,6 +23,9 @@ int main()
   cout << s.solve() << endl;
   cout << a.str() << endl << b.str() << endl; 
     
+  s.pop();
+  cout << endl;  
+  cout << a.str() << endl << b.str() << endl; 
   
   
   
