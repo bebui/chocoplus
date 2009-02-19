@@ -67,7 +67,7 @@ Constraint Solver::eq(IntVar __a, IntVar __b)
   std::vector<IntVar> __v;
   __v.push_back(__a);
   __v.push_back(__b);
-  Eq* e= new Eq(__v);
+  Eq* e= new Eq(this,__v);
   return Constraint(e);
 }
 
