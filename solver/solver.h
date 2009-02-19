@@ -3,12 +3,13 @@
 
 #include "../memory/environment.h"
 #include "../variable/intvar.h"
-//#include "../contraintes/contraintes.h"
+
+//class ConstraintObj;
+#include "../contraintes/constraint.h"
 #include "../contraintes/eq.h"
 #include <vector>
 #include <string>
-class ConstraintObj;
-class Constraint;
+
 class Solver
 {
 private:
