@@ -1,9 +1,10 @@
-#ifndef _IVAR
-#define _IVAR
-
 #include "intdomain.h"
 #include "../memory/environment.h"
 #include <string>
+
+#ifndef _IVAR
+#define _IVAR
+
 class IntVarObj
 {
 private:
