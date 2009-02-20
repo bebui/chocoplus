@@ -46,7 +46,15 @@ bool Solver::solve()
   bool stop = false;
   int type = 0;
   
-  
+  push();
+  try {
+    propagate();
+  }
+  catch (Contradiction &c)
+  {
+    pop();
+    return false;
+  }
   while (!stop)
   {
     if (type == 0)
@@ -65,28 +73,34 @@ bool Solver::solve()
     }
     else if (type == 1)
     {
-      push();
       try 
       {
-      __var.top()->restrict(__branch.top());
-      propagate();
-      type = 0;
+        push();
+        //std::cout<< __var.top()->str() << std::endl;
+        __var.top()->restrict(__branch.top());
+        //std::cout<< __var.top()->str() << std::endl;
+        
+        propagate();
+        type = 0;
       }
       catch (Contradiction &c)
       {
+        //std::cout << "Contradiction : " << c.cause << std::endl;
         type = 2;
       }
     }
     else if (type == 2)
     {
-      if (__var.empty())
+      if (!__var.empty())
       {
         try 
         {
           pop();
+          //std::cout<< "POP : " <<  __var.top()->str() << std::endl;    
           IntVarObj* __v = __var.top(); __var.pop();
           int __b = __branch.top(); __branch.pop();
           __v->remove(__b);
+          propagate();
           type = 0;
         }
         catch (Contradiction &c)
@@ -136,6 +150,16 @@ Constraint Solver::eq(IntVar __a, IntVar __b)
   return Constraint(e);
 }
 
+Constraint Solver::eq(IntVar __a,int __b)
+{
+  return eq(__a,make_var("no_name",__b,__b));
+}
+Constraint Solver::eq(int __b, IntVar __a)
+{
+  return eq(__a,__b);
+}
+
+
 Constraint Solver::neq(IntVar __a, IntVar __b)
 {
   std::vector<IntVar> __v;
@@ -146,6 +170,14 @@ Constraint Solver::neq(IntVar __a, IntVar __b)
   return Constraint(e);
 }
 
+Constraint Solver::neq(IntVar __a,int __b)
+{
+  return neq(__a,make_var("no_name",__b,__b));
+}
+Constraint Solver::neq(int __b, IntVar __a)
+{
+  return neq(__a,__b);
+}
 
 
 

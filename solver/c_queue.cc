@@ -3,7 +3,7 @@
 
 void constraint_queue::add(ConstraintObj* __cons)
 {
-  if (!__cons->in_queue())
+  if (!__cons->in_queue() && !__cons->entailed())
   {
     __cons->set_in_queue(true);
     _queue.push_front(__cons);

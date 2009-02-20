@@ -31,7 +31,11 @@ public:
   void add_to_queue(ConstraintObj*);
   IntVar make_var(std::string,int,int);
   Constraint eq(IntVar,IntVar);
+  Constraint eq(IntVar,int);
+  Constraint eq(int,IntVar);
   Constraint neq(IntVar,IntVar);
+  Constraint neq(IntVar,int);
+  Constraint neq(int,IntVar);
 
 };
 
