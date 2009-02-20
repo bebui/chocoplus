@@ -1,2 +1,2 @@
-#include "contraintes/eq.h"
-#include "contraintes/neq.h"
+#include "constraints/eq.h"
+#include "constraints/neq.h"
