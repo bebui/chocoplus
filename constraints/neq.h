@@ -16,7 +16,6 @@ private:
 public:
   Neq(Solver*,std::vector<IntVar>);
   void propagate();
-  bool entailed();
   
 };
 

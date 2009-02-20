@@ -12,6 +12,7 @@ protected:
   Solver* _s;
   std::vector<IntVar> _vars;
   Stored<bool> _entailed;
+  bool _inqueue;
   
 public:
   virtual ~ConstraintObj() {};
@@ -19,7 +20,10 @@ public:
   
   virtual void propagate() {}
   virtual bool entailed();
+  void record_vars();
   Solver* getSolver();
+  bool in_queue();
+  void set_in_queue(bool);
 };
 
 class Constraint

@@ -10,17 +10,21 @@ void Neq::propagate()
   
   if (__as < __bi || __ai > __bs)
   {
-    //_entailed.set(true);
+    _entailed.set(true);
   }
   else
   {
-    
+    if (_a.cardinality() == 1)
+    {
+    //  std::cout << "ai : " << __ai << std::endl;
+      _b.remove(__ai);
+      __bi = _b.inf();
+    }
+    if (_b.cardinality() ==1)
+    {
+     // std::cout << "bi : " << __bi << std::endl;
+      _a.remove(__bi);
+    }
   }
   
-}
-
-
-bool Neq::entailed()
-{
-  return 0;//_entailed.get();
 }
