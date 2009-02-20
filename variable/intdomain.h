@@ -24,15 +24,16 @@ private:
   Stored<int> _sup;
   StoredBitSet _repr;
   int _offset;
+  Stored<int> _card;
   
   
 public:
   
   IntDomain(Environment*,int,int);
   
-  void remove(int);
-  void update_inf(int);
-  void update_sup(int);
+  bool remove(int);
+  bool update_inf(int);
+  bool update_sup(int);
   
   int sup();
   int inf();

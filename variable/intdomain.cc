@@ -1,56 +1,77 @@
 #include "intdomain.h"
 
 
-IntDomain::IntDomain(Environment* __env, int __min, int __max) : _inf(__env,__min), _sup(__env,__max), _repr(__env,__max-__min+1),  _offset(__min)
+IntDomain::IntDomain(Environment* __env, int __min, int __max) : _inf(__env,__min), _sup(__env,__max), 
+                                                                 _repr(__env,__max-__min+1),  _offset(__min), 
+                                                                 _card(__env,__max-__min+1)
 {}
 
-void IntDomain::remove(int __val)
+bool IntDomain::remove(int __val)
 {
   int min = _inf.get();
   int max = _sup.get();
-  if (__val >= min && __val <= max)
+  if (__val >= min && __val <= max&& _repr.get(__val-_offset))
   {
+    if (min == max && __val == min)
+    {
+      //std::cout<< min << "  " << max << "  " << __val << std::endl;
+      throw Contradiction(0);
+      
+    }
+    
     _repr.clear(__val-_offset);
+    _card.add(-1);
     
     if (__val == min)
-      _inf.add(1);
+      _inf.set(_repr.next_set(min-_offset)+_offset);
     if (__val == max)
-      _sup.add(-1);
+      _sup.set(_repr.prev_set(max-_offset)+_offset);
     
-    if (min == max && __val == min)
-      throw Contradiction(0);
+  
     
+    return true;
   }
+  return false;
 }
 
-void IntDomain::update_inf(int __inf)
+bool IntDomain::update_inf(int __inf)
 {
   int min = _inf.get();
   int max = _sup.get();
-  if (__inf <= max)
+  if (__inf <= max )
   {
-    _repr.clear(min-_offset,__inf-_offset);
-    _inf.set(__inf);
+    if (__inf > min)
+    {
+      for (int __i = __inf-1 ; __i >= min ; __i--)
+        remove(__i);
+      return true;    
+    }
   }
   else 
   {
     throw Contradiction(1);
   }
+  return false;
 }
 
-void IntDomain::update_sup(int __sup)
+bool IntDomain::update_sup(int __sup)
 {
   int min = _inf.get();
   int max = _sup.get();
   if (__sup >= min)
   {
-    _repr.clear(__sup+1-_offset,max+1-_offset);
-    _sup.set(__sup);
+    if (__sup < max)
+    {
+      for (int __i = __sup+1 ; __i <= max ; __i++)
+        remove(__i);
+      return true;
+    }
   }
   else 
   {
     throw Contradiction(2);
   }
+  return false;
 }
 
 int IntDomain::sup()
@@ -98,12 +119,14 @@ bool IntDomain::is_singleton()
 
 bool IntDomain::is_empty()
 {
+  
   return _repr.cardinality() == 0;
 }
 
 size_t IntDomain::cardinality()
 {
-  return _repr.cardinality();
+  assert(_card.get() == _repr.cardinality());
+  return _card.get();
 }
 
 std::string IntDomain::str()

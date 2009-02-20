@@ -1,6 +1,8 @@
 #include "intvar.h"
+#include "../constraint.h"
+#include "../solver.h"
 
-IntVarObj::IntVarObj(Environment* __env, std::string __name, int __min, int __max) : _dom(__env,__min,__max), _name(__name) {}
+IntVarObj::IntVarObj(Solver* __s, std::string __name, int __min, int __max) : _s(__s), _dom(__s->getEnvironment(),__min,__max), _name(__name) {}
 
 int IntVarObj::sup()
 {
@@ -25,24 +27,50 @@ bool IntVarObj::contains(int __val)
   return _dom.contains(__val);
 }
 
-void IntVarObj::restrict(int __val)
+void IntVarObj::record(ConstraintObj* __cons)
 {
-  update_inf(__val);
-  update_sup(__val);
+  _cons.insert(__cons);
+}
+std::set<ConstraintObj*> IntVarObj::get_constraints()
+{
+  return _cons;
 }
 
-void IntVarObj::remove(int __val)
+bool IntVarObj::restrict(int __val)
 {
-  _dom.remove(__val);
-}
-void IntVarObj::update_inf(int __inf)
-{
-  _dom.update_inf(__inf);
+  return update_inf(__val) || update_sup(__val);
 }
 
-void IntVarObj::update_sup(int __sup)
+bool IntVarObj::remove(int __val)
 {
-  _dom.update_sup(__sup);
+  bool __rem = _dom.remove(__val);
+  if (__rem)
+  {
+    for (std::set<ConstraintObj*>::iterator it = _cons.begin() ; it != _cons.end() ; ++it)
+      _s->add_to_queue(*it);
+  }
+  return __rem;
+}
+bool IntVarObj::update_inf(int __inf)
+{
+  bool __rem = _dom.update_inf(__inf);
+  if (__rem)
+  {
+    for (std::set<ConstraintObj*>::iterator it = _cons.begin() ; it != _cons.end() ; ++it)
+      _s->add_to_queue(*it);
+  }
+  return __rem;
+}
+
+bool IntVarObj::update_sup(int __sup)
+{
+  bool __rem = _dom.update_sup(__sup);
+  if (__rem)
+  {
+    for (std::set<ConstraintObj*>::iterator it = _cons.begin() ; it != _cons.end() ; ++it)
+      _s->add_to_queue(*it);
+  }
+  return __rem;
 }
 
 size_t IntVarObj::cardinality()
@@ -83,24 +111,23 @@ bool IntVar::contains(int __val)
   return _repr->contains(__val);
 }
 
-void IntVar::restrict(int __val)
+bool IntVar::restrict(int __val)
 {
-  update_inf(__val);
-  update_sup(__val);
+  return update_inf(__val) || update_sup(__val);
 }
 
-void IntVar::remove(int __val)
+bool IntVar::remove(int __val)
 {
-  _repr->remove(__val);
+  return _repr->remove(__val);
 }
-void IntVar::update_inf(int __inf)
+bool IntVar::update_inf(int __inf)
 {
-  _repr->update_inf(__inf);
+  return _repr->update_inf(__inf);
 }
 
-void IntVar::update_sup(int __sup)
+bool IntVar::update_sup(int __sup)
 {
-  _repr->update_sup(__sup);
+  return _repr->update_sup(__sup);
 }
 
 size_t IntVar::cardinality()
