@@ -13,6 +13,14 @@ int IntVarObj::inf()
   return _dom.inf();
 }
 
+int IntVarObj::get()
+{
+  if (_dom.inf() == _dom.sup())
+    return _dom.inf();
+  else
+    return INT_MAX;
+}
+
 int IntVarObj::next(int __val)
 {
   return _dom.next(__val);
@@ -95,6 +103,11 @@ int IntVar::sup()
 int IntVar::inf()
 {
   return _repr->inf();
+}
+
+int IntVar::get()
+{
+  return _repr->get();
 }
 
 int IntVar::next(int __val)

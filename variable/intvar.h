@@ -2,6 +2,7 @@
 #define _IVAR
 
 #include "intdomain.h"
+#include <limits.h>
 #include <string>
 #include <set>
 class Solver;
@@ -21,6 +22,7 @@ public:
   
   int sup();
   int inf();
+  int get();
   bool restrict(int);
   bool remove(int);
   bool update_inf(int);
@@ -48,6 +50,7 @@ public:
   IntVar(IntVarObj*);
   int sup();
   int inf();
+  int get();
   bool restrict(int);
   bool remove(int);
   bool update_inf(int);
