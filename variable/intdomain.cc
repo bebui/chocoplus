@@ -125,7 +125,7 @@ bool IntDomain::is_empty()
 
 size_t IntDomain::cardinality()
 {
-  assert(_card.get() == _repr.cardinality());
+  //assert(_card.get() == _repr.cardinality());
   return _card.get();
 }
 
