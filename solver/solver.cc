@@ -9,7 +9,7 @@ Solver::~Solver()
     delete(*it);
    // std::cout << " 1 DELETE " << std::endl;   
   }
-  for (std::vector<ConstraintObj*>::iterator it = _cons.begin() ; it != _cons.end() ; ++it)
+  for (std::vector<ConstraintObj*>::iterator it = _phantom.begin() ; it != _phantom.end() ; ++it)
   {
     delete(*it);
    // std::cout << " 1 DELETE " << std::endl;   
@@ -65,7 +65,8 @@ Constraint Solver::eq(IntVar __a, IntVar __b)
   std::vector<IntVar> __v;
   __v.push_back(__a);
   __v.push_back(__b);
-  Eq* e= new Eq(__v);
+  Eq* e= new Eq(this,__v);
+  _phantom.push_back(e);
   return Constraint(e);
 }
 

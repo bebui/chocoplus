@@ -17,7 +17,7 @@ private:
 
   typedef Stored<uint64_t> Stored64;
   
-  std::vector<Stored<uint64_t>*> _words;
+  std::vector<Stored64*> _words;
   size_t _size;
   
  

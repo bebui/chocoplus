@@ -1,12 +1,9 @@
 #ifndef _SOLV
 #define _SOLV
 
-#include "../memory/environment.h"
-#include "../variable/intvar.h"
-
-//class ConstraintObj;
-#include "../contraintes/constraint.h"
-#include "../contraintes/eq.h"
+#include "../memory.h"
+#include "../variable.h"
+#include "../constraint.h"
 #include <vector>
 #include <string>
 
@@ -16,6 +13,7 @@ private:
   Environment _env;
   std::vector<IntVarObj*> _vars;
   std::vector<ConstraintObj*> _cons;
+  std::vector<ConstraintObj*> _phantom;
   
 public:
   ~Solver();

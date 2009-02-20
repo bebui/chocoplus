@@ -1,9 +1,7 @@
 #ifndef _INTDOM
 #define _INTDOM
 
-#include "../memory/environment.h"
-#include "../memory/storedbitset.h"
-#include "../memory/stored.h"
+#include "../memory.h"
 #include <string>  
 #include <iostream>  
 #include <sstream>

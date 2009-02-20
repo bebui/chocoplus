@@ -1,6 +1,6 @@
 #include "eq.h"
 
-Eq::Eq(std::vector<IntVar> __vars) : ConstraintObj(__vars) ,_a(__vars[0]) , _b(__vars[1]) {}
+Eq::Eq(Solver* __s,std::vector<IntVar> __vars) : ConstraintObj(__s,__vars) ,_a(__vars[0]) , _b(__vars[1]) {}
 
 void Eq::propagate()
 {

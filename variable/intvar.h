@@ -1,5 +1,4 @@
 #include "intdomain.h"
-#include "../memory/environment.h"
 #include <string>
 
 #ifndef _IVAR

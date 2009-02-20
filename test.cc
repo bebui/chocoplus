@@ -1,9 +1,6 @@
-#include "memory/stored.h"
-#include "memory/storedbitset.h"
-#include "variable/intdomain.h"
-#include "memory/environment.h"
-#include "solver/solver.h"
-#include "contraintes/eq.h"
+#include "memory.h"
+#include "variable.h"
+#include "solver.h"
 #include <iostream>
 #include <vector>
 
@@ -13,6 +10,7 @@ int main()
   
   Solver s;
   
+
   s.push();
   IntVar a = s.make_var("a",10,20);
   IntVar b = s.make_var("b",5,11);

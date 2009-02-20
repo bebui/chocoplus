@@ -1,5 +1,5 @@
 #include "neq.h"
-Neq::Neq(std::vector<IntVar> __vars) : ConstraintObj(__vars) ,_a(__vars[0]) , _b(__vars[1]) {}
+Neq::Neq(Solver* __s,std::vector<IntVar> __vars) : ConstraintObj(__s,__vars) ,_a(__vars[0]) , _b(__vars[1]) {}
 
 void Neq::propagate()
 {

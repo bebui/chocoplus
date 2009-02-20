@@ -17,9 +17,9 @@ StoredBitSet::StoredBitSet(Environment* __env, size_t __size) : _size(__size)
 }
 StoredBitSet::~StoredBitSet()
 {
-  for (size_t __i = 0 ; __i < _words.size() ; __i++)
+  for (std::vector<Stored64*>::iterator it = _words.begin() ; it != _words.end() ; ++it)
   {
-    delete _words[__i];
+    delete (*it);
     //std::cout << " 1 DELETE " << std::endl;
     
   }

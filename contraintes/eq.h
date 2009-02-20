@@ -14,7 +14,7 @@ private:
   IntVar _b;
   
 public:
-  Eq(std::vector<IntVar>);
+  Eq(Solver*,std::vector<IntVar>);
   void propagate();
   
 };
