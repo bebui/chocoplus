@@ -1,5 +1,6 @@
 #include "solver.h"
-
+#include "val_chooser.h"
+#include "var_chooser.h"
 Solver::Solver()  {}
 
 Solver::~Solver()
@@ -30,30 +31,95 @@ void Solver::pop()
 
 void Solver::post(Constraint c)
 {
+  c.get_constraint()->record_vars();
+  add_to_queue(c.get_constraint());
   _cons.push_back(c.get_constraint());
 }
 
 bool Solver::solve()
 {
-  push();
-  try 
+  std::stack<IntVarObj*> __var;
+  std::stack<int> __branch;
+  
+  var_chooser __varc(_vars);
+  val_chooser __valc;
+  bool stop = false;
+  int type = 0;
+  
+  
+  while (!stop)
   {
-    for (std::vector<ConstraintObj*>::iterator it = _cons.begin() ; it != _cons.end() ; ++it)
+    if (type == 0)
     {
-      (*it)->propagate();
+      IntVarObj* __v = __varc.get_var();
+      if (__v != NULL)
+      {
+        __var.push(__v);
+        __branch.push(__valc.get_val(__v));
+        type = 1;
+      }
+      else
+      {
+        stop = true;
+      }
     }
-    return true;
+    else if (type == 1)
+    {
+      push();
+      try 
+      {
+      __var.top()->restrict(__branch.top());
+      propagate();
+      type = 0;
+      }
+      catch (Contradiction &c)
+      {
+        type = 2;
+      }
+    }
+    else if (type == 2)
+    {
+      if (__var.empty())
+      {
+        try 
+        {
+          pop();
+          IntVarObj* __v = __var.top(); __var.pop();
+          int __b = __branch.top(); __branch.pop();
+          __v->remove(__b);
+          type = 0;
+        }
+        catch (Contradiction &c)
+        {
+          type = 2;
+        }
+      }
+      else 
+      {
+        return false;
+      }
+    }
+    
+      
   }
-  catch(Contradiction &c)
-  {
-    pop();
-    return false;
-  }
+  return true;
+  
+}
+
+void Solver::propagate()
+{
+  _queue.propagate();
+  
+}
+
+void Solver::add_to_queue(ConstraintObj* __cons)
+{
+  _queue.add(__cons);
 }
 
 IntVar Solver::make_var(std::string __name,int __inf, int __sup)
 {
-  IntVarObj* a = new IntVarObj(&_env,__name,__inf,__sup);
+  IntVarObj* a = new IntVarObj(this,__name,__inf,__sup);
   //std::cout << " 1 NEW " << std::endl;
   _vars.push_back(a);
   return IntVar(a);
@@ -69,5 +135,17 @@ Constraint Solver::eq(IntVar __a, IntVar __b)
   _phantom.push_back(e);
   return Constraint(e);
 }
+
+Constraint Solver::neq(IntVar __a, IntVar __b)
+{
+  std::vector<IntVar> __v;
+  __v.push_back(__a);
+  __v.push_back(__b);
+  Neq* e= new Neq(this,__v);
+  _phantom.push_back(e);
+  return Constraint(e);
+}
+
+
 
 
