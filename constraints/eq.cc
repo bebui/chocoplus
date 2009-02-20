@@ -2,6 +2,7 @@
 
 Eq::Eq(Solver* __s,std::vector<IntVar> __vars) : ConstraintObj(__s,__vars) ,_a(__vars[0]) , _b(__vars[1]) {}
 
+
 void Eq::propagate()
 {
   int __ai = _a.inf();
@@ -31,5 +32,8 @@ void Eq::propagate()
     if(!_a.contains(__i))
       _b.remove(__i);
   }
+  
+  if (_a.cardinality() == 1 && _b.cardinality() == 1)
+    _entailed.set(true);
   
 }

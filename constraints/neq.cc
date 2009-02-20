@@ -16,13 +16,14 @@ void Neq::propagate()
   {
     if (_a.cardinality() == 1)
     {
-    //  std::cout << "ai : " << __ai << std::endl;
+      //std::cout << "ai : " << __ai << std::endl;
       _b.remove(__ai);
+      //std::cout << _b.str() << std::endl;
       __bi = _b.inf();
     }
     if (_b.cardinality() ==1)
     {
-     // std::cout << "bi : " << __bi << std::endl;
+      //std::cout << "bi : " << __bi << std::endl;
       _a.remove(__bi);
     }
   }
