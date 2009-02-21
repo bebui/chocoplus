@@ -9,20 +9,47 @@ int main()
 {
   
     Solver s;
-
-
+    storedvector<int> __v(s.getEnvironment());
+    
     s.push();
-    IntVar a = s.make_var("a",10,12);
-    IntVar b = s.make_var("b",10,11);
-
-    Constraint c = s.eq(12,a);
-    Constraint c2 = s.neq(10,b);
-
-    s.post(c);
-    s.post(c2);
-    cout << ((s.solve()==0)?"NO SOLUTION" : "SOLVED") << endl;
-  //  b.update_inf(10);
-    cout << a.str() << endl << b.str() << endl; 
+    __v.add(10);
+    __v.add(20);
+    __v.add(30);
+    s.push();
+    
+    cout << __v.str() << endl;
+    
+    __v.removeLast();
+    cout << __v.str() << endl;
+    s.pop();
+    cout << __v.str() << endl;
+    s.push();
+    __v.set(1,25);
+    cout << __v.str() << endl;
+    
+    s.pop();
+    cout << __v.str() << endl;
+    s.push();
+    __v.add(0);
+    __v.set(0,15);
+    cout << __v.str() << endl;
+    s.push();
+    __v.add(150);
+    __v.set(1,25);
+    __v.set(2,35);
+    __v.set(3,45);
+    cout << __v.str() << endl;
+    
+    s.pop();
+    cout << __v.str() << endl;
+    
+    s.pop();
+    cout << __v.str() << endl;
+    
+    
+        
+        
+    
  
   
 }
