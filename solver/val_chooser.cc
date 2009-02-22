@@ -5,3 +5,4 @@ int val_chooser::get_val(IntVarObj* __v)
 {
   return __v->inf();
 }
+

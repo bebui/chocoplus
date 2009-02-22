@@ -18,4 +18,3 @@ IntVarObj* var_chooser::get_var()
   }
   return __v;
 }
-

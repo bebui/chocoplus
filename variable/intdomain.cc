@@ -139,5 +139,3 @@ std::string IntDomain::str()
   return o.str();
 }
 
-
-

@@ -12,3 +12,4 @@ ADD_EXECUTABLE(sudoku sudoku.cc)
 
 TARGET_LINK_LIBRARIES(test memory solver variable constraints)
 TARGET_LINK_LIBRARIES(sudoku memory solver variable constraints)
+

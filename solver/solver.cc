@@ -179,5 +179,3 @@ Constraint Solver::neq(int __b, IntVar __a)
   return neq(__a,__b);
 }
 
-
-

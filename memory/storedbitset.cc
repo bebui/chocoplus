@@ -182,3 +182,4 @@ void StoredBitSet::print()
   }
   std::cout << std::endl;
 }
+

@@ -153,5 +153,3 @@ std::string IntVar::str()
   return _repr->str();
 }
 
-
-

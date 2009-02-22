@@ -46,10 +46,6 @@ int main()
     s.pop();
     cout << __v.str() << endl;
     
-    
-        
-        
-    
- 
-  
+     
 }
+

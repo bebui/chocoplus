@@ -37,3 +37,4 @@ void Environment::pop()
 {
   pop(_currentworld-1);
 }
+

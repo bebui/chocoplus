@@ -49,7 +49,7 @@ public:
       _size.add(-1);
       return _current[_size.get()]->get();
     }
-    return NULL;
+    return T(0);
   }
   
   std::string str()
@@ -65,3 +65,4 @@ public:
 };
 
 #endif
+

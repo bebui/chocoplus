@@ -37,3 +37,4 @@ void Eq::propagate()
     _entailed.set(true);
   
 }
+

@@ -31,3 +31,4 @@ void constraint_queue::empty()
     __c->set_in_queue(false);
   }  
 }
+
