@@ -18,7 +18,11 @@ int main()
       __ve.push_back(new Stored<int>(s.getEnvironment(),i));
     }
     
-     
+     for (int i = 0 ; i < 100000 ; i++)
+      {
+        //__v.add(i);
+        delete __ve[i];//.push_back(new Stored<int>(s.getEnvironment(),i));
+      }
      
 }
 
