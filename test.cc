@@ -10,42 +10,15 @@ int main()
   
     Solver s;
     storedvector<int> __v(s.getEnvironment());
-    
+    std::vector<Stored<int>* > __ve;
     s.push();
-    __v.add(10);
-    __v.add(20);
-    __v.add(30);
-    s.push();
+    for (int i = 0 ; i < 100000 ; i++)
+    {
+      //__v.add(i);
+      __ve.push_back(new Stored<int>(s.getEnvironment(),i));
+    }
     
-    cout << __v.str() << endl;
-    
-    __v.removeLast();
-    cout << __v.str() << endl;
-    s.pop();
-    cout << __v.str() << endl;
-    s.push();
-    __v.set(1,25);
-    cout << __v.str() << endl;
-    
-    s.pop();
-    cout << __v.str() << endl;
-    s.push();
-    __v.add(0);
-    __v.set(0,15);
-    cout << __v.str() << endl;
-    s.push();
-    __v.add(150);
-    __v.set(1,25);
-    __v.set(2,35);
-    __v.set(3,45);
-    cout << __v.str() << endl;
-    
-    s.pop();
-    cout << __v.str() << endl;
-    
-    s.pop();
-    cout << __v.str() << endl;
-    
+     
      
 }
 
