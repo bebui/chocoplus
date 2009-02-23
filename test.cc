@@ -10,19 +10,15 @@ int main()
   
     Solver s;
     storedvector<int> __v(s.getEnvironment());
-    std::vector<Stored<int>* > __ve;
+    std::vector<Stored<int>* >* __ve = new std::vector<Stored<int>* >();
     s.push();
     for (int i = 0 ; i < 100000 ; i++)
     {
       //__v.add(i);
-      __ve.push_back(new Stored<int>(s.getEnvironment(),i));
+      __ve->push_back(new Stored<int>(s.getEnvironment(),i));
     }
     
-     for (int i = 0 ; i < 100000 ; i++)
-      {
-        //__v.add(i);
-        delete __ve[i];//.push_back(new Stored<int>(s.getEnvironment(),i));
-      }
+    delete __ve;
      
 }
 
