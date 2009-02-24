@@ -4,16 +4,16 @@
 
 IntVarObj::IntVarObj(Solver* __s, std::string __name, int __min, int __max) : _s(__s), _dom(__s->getEnvironment(),__min,__max), _name(__name) {}
 
-int IntVarObj::sup()
+int IntVarObj::sup() const
 {
   return _dom.sup();
 }
-int IntVarObj::inf()
+int IntVarObj::inf() const
 {
   return _dom.inf();
 }
 
-int IntVarObj::get()
+int IntVarObj::get() const
 {
   if (_dom.inf() == _dom.sup())
     return _dom.inf();
@@ -21,16 +21,16 @@ int IntVarObj::get()
     return INT_MAX;
 }
 
-int IntVarObj::next(int __val)
+int IntVarObj::next(int __val) const
 {
   return _dom.next(__val);
 }
-int IntVarObj::prev(int __val)
+int IntVarObj::prev(int __val) const
 {
   return _dom.prev(__val);
 }
 
-bool IntVarObj::contains(int __val)
+bool IntVarObj::contains(int __val) const
 {
   return _dom.contains(__val);
 }
@@ -39,7 +39,7 @@ void IntVarObj::record(ConstraintObj* __cons)
 {
   _cons.insert(__cons);
 }
-std::set<ConstraintObj*> IntVarObj::get_constraints()
+std::set<ConstraintObj*> IntVarObj::get_constraints() const
 {
   return _cons;
 }
@@ -81,12 +81,12 @@ bool IntVarObj::update_sup(int __sup)
   return __rem;
 }
 
-size_t IntVarObj::cardinality()
+size_t IntVarObj::cardinality() const
 {
   return _dom.cardinality(); 
 }
 
-std::string IntVarObj::str()
+std::string IntVarObj::str() const
 {
   return _name + ":" + _dom.str();
 }
@@ -96,30 +96,30 @@ std::string IntVarObj::str()
 
 IntVar::IntVar(IntVarObj* __var) : _repr(__var) {}
 
-int IntVar::sup()
+int IntVar::sup() const
 {
   return _repr->sup();
 }
-int IntVar::inf()
+int IntVar::inf() const
 {
   return _repr->inf();
 }
 
-int IntVar::get()
+int IntVar::get() const
 {
   return _repr->get();
 }
 
-int IntVar::next(int __val)
+int IntVar::next(int __val) const
 {
   return _repr->next(__val);
 }
-int IntVar::prev(int __val)
+int IntVar::prev(int __val) const
 {
   return _repr->prev(__val);
 }
 
-bool IntVar::contains(int __val)
+bool IntVar::contains(int __val) const
 {
   return _repr->contains(__val);
 }
@@ -143,12 +143,12 @@ bool IntVar::update_sup(int __sup)
   return _repr->update_sup(__sup);
 }
 
-size_t IntVar::cardinality()
+size_t IntVar::cardinality() const
 {
   return _repr->cardinality(); 
 }
 
-std::string IntVar::str()
+std::string IntVar::str() const
 {
   return _repr->str();
 }

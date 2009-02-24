@@ -35,16 +35,16 @@ public:
   bool update_inf(int);
   bool update_sup(int);
   
-  int sup();
-  int inf();
-  int next(int);
-  int prev(int);
-  bool contains(int);
+  int sup() const;
+  int inf() const;
+  int next(int) const;
+  int prev(int) const;
+  bool contains(int) const;
   
-  bool is_singleton();
-  bool is_empty();
-  size_t cardinality();
-  std::string str();
+  bool is_singleton() const;
+  bool is_empty() const;
+  size_t cardinality() const;
+  std::string str() const;
   
   
   

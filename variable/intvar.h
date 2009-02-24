@@ -20,24 +20,24 @@ public:
   
   IntVarObj(Solver*,std::string,int,int);
   
-  int sup();
-  int inf();
-  int get();
+  int sup() const;
+  int inf() const;
+  int get() const;
   bool restrict(int);
   bool remove(int);
   bool update_inf(int);
   bool update_sup(int);
   
-  int next(int);
-  int prev(int);
-  bool contains(int);
+  int next(int) const;
+  int prev(int) const;
+  bool contains(int) const;
   
   void record(ConstraintObj*);
-  std::set<ConstraintObj*> get_constraints();
+  std::set<ConstraintObj*> get_constraints() const;
   
-  size_t cardinality();
-  std::string getName() { return _name;}
-  std::string str();
+  size_t cardinality() const;
+  std::string getName() const { return _name;}
+  std::string str() const;
   
 };
 
@@ -48,20 +48,20 @@ private:
   
 public:
   IntVar(IntVarObj*);
-  int sup();
-  int inf();
-  int get();
+  int sup() const;
+  int inf() const;
+  int get() const;
   bool restrict(int);
   bool remove(int);
   bool update_inf(int);
   bool update_sup(int);
-  size_t cardinality();
-  std::string getName() { return _repr->getName();}
-  std::string str();
-  int next(int);
-  int prev(int);
-  bool contains(int);
-  IntVarObj* get_obj() { return _repr;}
+  size_t cardinality() const;
+  std::string getName() const { return _repr->getName();}
+  std::string str() const;
+  int next(int) const;
+  int prev(int) const;
+  bool contains(int) const;
+  IntVarObj* get_obj() const { return _repr;}
    
   
 };

@@ -170,7 +170,7 @@ Constraint Solver::neq(IntVar __a, IntVar __b)
   return Constraint(e);
 }
 
-Constraint Solver::neq(IntVar __a,int __b)
+Constraint Solver::neq(IntVar __a,int __b) 
 {
   return neq(__a,make_var("no_name",__b,__b));
 }

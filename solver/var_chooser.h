@@ -13,7 +13,7 @@ private:
   
 public:
   var_chooser(std::vector<IntVarObj*>);
-  IntVarObj* get_var();
+  IntVarObj* get_var() const;
 };
 
 

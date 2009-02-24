@@ -5,7 +5,7 @@ class IntVarObj;
 class val_chooser
 {
 public:
-  int get_val(IntVarObj*);
+  int get_val(IntVarObj*) const;
 };
 
 

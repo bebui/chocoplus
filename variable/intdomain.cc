@@ -74,17 +74,17 @@ bool IntDomain::update_sup(int __sup)
   return false;
 }
 
-int IntDomain::sup()
+int IntDomain::sup() const
 {
   return _sup.get();
 }
 
-int IntDomain::inf()
+int IntDomain::inf() const
 {
   return _inf.get();
 }
 
-int IntDomain::next(int __val)
+int IntDomain::next(int __val) const
 {
   if (__val >= inf() && __val <= sup())
   {
@@ -95,7 +95,7 @@ int IntDomain::next(int __val)
   }
   return INT_MIN;
 }
-int IntDomain::prev(int __val)
+int IntDomain::prev(int __val) const
 {
   if (__val >= inf() && __val <= sup())
   {
@@ -107,29 +107,29 @@ int IntDomain::prev(int __val)
   return INT_MIN;
 }
 
-bool IntDomain::contains(int __val)
+bool IntDomain::contains(int __val) const
 {
   return _repr.get(__val-_offset);
 }
 
-bool IntDomain::is_singleton()
+bool IntDomain::is_singleton() const
 {
   return _sup.get() == _inf.get();
 }
 
-bool IntDomain::is_empty()
+bool IntDomain::is_empty() const
 {
   
   return _repr.cardinality() == 0;
 }
 
-size_t IntDomain::cardinality()
+size_t IntDomain::cardinality() const
 {
   //assert(_card.get() == _repr.cardinality());
   return _card.get();
 }
 
-std::string IntDomain::str()
+std::string IntDomain::str() const
 {     
   std::ostringstream o;  
   o << "{ ";
