@@ -36,14 +36,14 @@ public:
   
   void clear();
   
-  bool get(size_t); 
-  int next_set(size_t);
-  int prev_set(size_t);
-  int next_clear(size_t);
-  int prev_clear(size_t);
-  int cardinality();
+  bool get(size_t) const;
+  int next_set(size_t) const;
+  int prev_set(size_t) const;
+  int next_clear(size_t) const;
+  int prev_clear(size_t) const;
+  int cardinality() const;
   
-  void print();
+  void print() const;
  
 };
 

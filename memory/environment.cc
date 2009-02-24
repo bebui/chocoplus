@@ -10,7 +10,7 @@ void Environment::push()
   _currentworld++;
 }
 
-int Environment::getIndex()
+int Environment::getIndex() const
 {
   return _currentworld;
 }

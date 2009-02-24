@@ -15,7 +15,7 @@ class Stored : public StoredElement
 
         Stored(Environment* __env,T val = 0) : StoredElement(__env),_current(val) {}
 
-        T get()
+        T get() const
         {
             return _current;
         }

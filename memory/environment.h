@@ -20,7 +20,7 @@ public:
   void push();
   void pop(int w);
   void pop();
-  int getIndex();
+  int getIndex() const;
   void addElement(StoredElement*);
   
 };

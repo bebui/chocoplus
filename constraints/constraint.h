@@ -16,13 +16,13 @@ protected:
   
 public:
   virtual ~ConstraintObj() {};
-  ConstraintObj(Solver*,std::vector<IntVar>);
+  ConstraintObj(Solver*, const std::vector<IntVar> &);
   
   virtual void propagate() {}
-  virtual bool entailed();
+  virtual bool entailed() const;
   void record_vars();
-  Solver* getSolver();
-  bool in_queue();
+  Solver* getSolver() const;
+  bool in_queue() const;
   void set_in_queue(bool);
 };
 
@@ -36,18 +36,11 @@ public:
   Constraint(ConstraintObj*);
   
   void propagate();
-  bool entailed();
-  ConstraintObj* get_constraint();
+  bool entailed() const;
+  ConstraintObj* get_constraint() const;
   
   
 };
-
-
-
-
-
-
-
 
 #endif
 

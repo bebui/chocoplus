@@ -14,7 +14,7 @@ private:
   IntVar _b;
   
 public:
-  Neq(Solver*,std::vector<IntVar>);
+  Neq(Solver*, const std::vector<IntVar>&);
   void propagate();
   
 };

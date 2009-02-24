@@ -26,7 +26,7 @@ public:
     }
   }
   
-  T get(size_t __idx)
+  T get(size_t __idx) const
   {
     return _current[__idx]->get();
   }
@@ -52,7 +52,7 @@ public:
     return T(0);
   }
   
-  std::string str()
+  std::string str() const
   {
     std::ostringstream o;  
     o << "[ ";

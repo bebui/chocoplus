@@ -67,7 +67,7 @@ void StoredBitSet::clear(size_t __from, size_t __to)
 }
 
 
-bool StoredBitSet::get(size_t __elem)
+bool StoredBitSet::get(size_t __elem) const
 {
   if (__elem < _size && __elem >= 0)
   {
@@ -78,7 +78,7 @@ bool StoredBitSet::get(size_t __elem)
   return 0;
 }
 
-int StoredBitSet::next_set(size_t __idx) {
+int StoredBitSet::next_set(size_t __idx) const {
 
   //++__elem;
   size_t __widx = __idx >> _ADDR_BITS_PER_WORD;
@@ -98,7 +98,7 @@ int StoredBitSet::next_set(size_t __idx) {
     }
 } 
 
-int StoredBitSet::prev_set(size_t __idx) {
+int StoredBitSet::prev_set(size_t __idx) const {
 
   size_t __widx = __idx >> _ADDR_BITS_PER_WORD;
   
@@ -119,7 +119,7 @@ int StoredBitSet::prev_set(size_t __idx) {
   }
 }
 
-int StoredBitSet::prev_clear(size_t __idx) 
+int StoredBitSet::prev_clear(size_t __idx) const
 {
   size_t __widx = __idx >> _ADDR_BITS_PER_WORD;
 
@@ -140,7 +140,7 @@ int StoredBitSet::prev_clear(size_t __idx)
   }
 }
 
-int StoredBitSet::next_clear(size_t __idx) {
+int StoredBitSet::next_clear(size_t __idx) const {
   
   size_t __widx = __idx >> _ADDR_BITS_PER_WORD;
 
@@ -158,17 +158,17 @@ int StoredBitSet::next_clear(size_t __idx) {
     }
 }
 
-int StoredBitSet::cardinality()
+int StoredBitSet::cardinality() const
 {
   int ret = 0;
-  for (std::vector<Stored64*>::iterator it = _words.begin() ; it != _words.end();++it)
+  for (std::vector<Stored64*>::const_iterator it = _words.begin() ; it != _words.end();++it)
     ret += __builtin_popcountll((*it)->get());
   
   return ret;
 }
       
 
-void StoredBitSet::print()
+void StoredBitSet::print() const
 {
   unsigned int c = 0;
   for (size_t i = 0 ; i < _words.size() ;i++)
