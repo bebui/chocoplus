@@ -23,19 +23,19 @@ public:
   Environment* getEnvironment() { return &_env; }
   void push();
   void pop();
-  void post(Constraint);
+  void post(const Constraint &);
   
   Solver();
   bool solve();
   void propagate();
   void add_to_queue(ConstraintObj*);
-  IntVar make_var(std::string,int,int);
-  Constraint eq(IntVar,IntVar);
-  Constraint eq(IntVar,int);
-  Constraint eq(int,IntVar);
-  Constraint neq(IntVar,IntVar);
-  Constraint neq(IntVar,int);
-  Constraint neq(int,IntVar);
+  IntVar make_var(const std::string &,int,int);
+  Constraint eq(const IntVar &, const IntVar &);
+  Constraint eq(const IntVar &,int);
+  Constraint eq(int, const IntVar &);
+  Constraint neq(const IntVar &, const IntVar &);
+  Constraint neq(const IntVar &,int);
+  Constraint neq(int, const IntVar &);
 
 };
 

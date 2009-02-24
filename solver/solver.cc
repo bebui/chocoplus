@@ -29,7 +29,7 @@ void Solver::pop()
   _env.pop();
 }
 
-void Solver::post(Constraint c)
+void Solver::post(const Constraint & c)
 {
   c.get_constraint()->record_vars();
   add_to_queue(c.get_constraint());
@@ -131,7 +131,7 @@ void Solver::add_to_queue(ConstraintObj* __cons)
   _queue.add(__cons);
 }
 
-IntVar Solver::make_var(std::string __name,int __inf, int __sup)
+IntVar Solver::make_var(const std::string & __name,int __inf, int __sup)
 {
   IntVarObj* a = new IntVarObj(this,__name,__inf,__sup);
   //std::cout << " 1 NEW " << std::endl;
@@ -140,7 +140,7 @@ IntVar Solver::make_var(std::string __name,int __inf, int __sup)
   
 }
 
-Constraint Solver::eq(IntVar __a, IntVar __b)
+Constraint Solver::eq(const IntVar & __a, const IntVar & __b)
 {
   std::vector<IntVar> __v;
   __v.push_back(__a);
@@ -150,17 +150,17 @@ Constraint Solver::eq(IntVar __a, IntVar __b)
   return Constraint(e);
 }
 
-Constraint Solver::eq(IntVar __a,int __b)
+Constraint Solver::eq(const IntVar & __a,int __b)
 {
   return eq(__a,make_var("no_name",__b,__b));
 }
-Constraint Solver::eq(int __b, IntVar __a)
+Constraint Solver::eq(int __b, const IntVar & __a)
 {
   return eq(__a,__b);
 }
 
 
-Constraint Solver::neq(IntVar __a, IntVar __b)
+Constraint Solver::neq(const IntVar & __a, const IntVar & __b)
 {
   std::vector<IntVar> __v;
   __v.push_back(__a);
@@ -170,11 +170,11 @@ Constraint Solver::neq(IntVar __a, IntVar __b)
   return Constraint(e);
 }
 
-Constraint Solver::neq(IntVar __a,int __b) 
+Constraint Solver::neq(const IntVar & __a,int __b)
 {
   return neq(__a,make_var("no_name",__b,__b));
 }
-Constraint Solver::neq(int __b, IntVar __a)
+Constraint Solver::neq(int __b, const IntVar & __a)
 {
   return neq(__a,__b);
 }

@@ -36,7 +36,7 @@ public:
     _current[__idx]->set(__val);
   }
         
-  void add(T __val)
+  void add(const T & __val)
   {
     _current.push_back(new StoredT(_env,__val));
     _size.add(1);

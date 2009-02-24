@@ -20,7 +20,7 @@ class Stored : public StoredElement
             return _current;
         }
 
-        void set(T val)
+        void set(const T & val)
         {
             int widx =_env->getIndex();
             if (widx > _lastsave)
@@ -46,7 +46,7 @@ class Stored : public StoredElement
             }
         }
 
-        void add(T val)
+        void add(const T & val)
         {
             set(val+_current);
         }
