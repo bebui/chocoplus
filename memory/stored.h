@@ -3,6 +3,8 @@
 
 #include <stack>
 #include "environment.h"
+#include "../signals.h"
+#include "boost/bind.hpp"
 template <class T>
 class Stored : public StoredElement
 {
@@ -13,7 +15,10 @@ class Stored : public StoredElement
 
     public:
 
-        Stored(Environment* __env,T val = 0) : StoredElement(__env),_current(val) {}
+        Stored(Environment* __env,T val = 0) : StoredElement(__env),_current(val)
+        {
+            backtrack.connect(boost::bind(&Stored::restore, this, _1));
+        }
 
         T get() const
         {
@@ -32,6 +37,11 @@ class Stored : public StoredElement
             _current = val;
         }
 
+        void restore()
+        {
+                 _worlds.pop();
+                  _trail.pop();
+        }
         void restore(int widx)
         {
             if (widx < _lastsave)

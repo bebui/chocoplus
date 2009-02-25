@@ -1,7 +1,7 @@
 #ifndef _ENVI
 #define _ENVI
 
-
+#include "../signals.h"
 #include <vector>
 #include <iostream>
 class StoredElement;

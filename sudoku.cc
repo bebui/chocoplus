@@ -1,13 +1,37 @@
 #include "memory.h"
 #include "variable.h"
 #include "solver.h"
+#include "signals.h"
+#include "boost/date_time/posix_time/posix_time.hpp"
 #include <iostream>
 #include <vector>
 
 using namespace std;
+using namespace boost::posix_time;
+int nb_bt = 0;
+void log_backtracks(int w)
+{
+    std::cout << "We have a backtrack! " << w << std::endl;
+    nb_bt++;
+}
+
+ptime start_t;
+void start()
+{
+    start_t = microsec_clock::local_time();
+}
+
+void stop()
+{
+    std::cout << "Solving done. Runtime: " << microsec_clock::local_time() - start_t << std::endl;
+    std::cout << "Number of backtracks: " << nb_bt << std::endl;
+}
 int main()
 {
-
+    backtrack.connect(&log_backtracks);
+    solver_start.connect(&start);
+    solver_stop.connect(&stop);
+   // backtrack();
   Solver s;
   int n = 9;
   

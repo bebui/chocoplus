@@ -38,6 +38,7 @@ void Solver::post(const Constraint & c)
 
 bool Solver::solve()
 {
+    solver_start();
   std::stack<IntVarObj*> __var;
   std::stack<int> __branch;
   
@@ -116,6 +117,7 @@ bool Solver::solve()
     
       
   }
+  solver_stop();
   return true;
   
 }

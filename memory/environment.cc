@@ -25,11 +25,12 @@ void Environment::addElement(StoredElement* si)
 void Environment::pop(int w)
 {
   //std::cout << _ints.size() << std::endl;
-  for (std::vector<StoredElement*>::iterator it = _elems.begin(); it!=_elems.end(); ++it)
+  /*for (std::vector<StoredElement*>::iterator it = _elems.begin(); it!=_elems.end(); ++it)
   {
     //std::cout << "bui" << std::endl;
     (*it)->restore(w);
-  }
+  }*/
+    backtrack(w);
   _currentworld = w;
 }
 
