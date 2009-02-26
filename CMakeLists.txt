@@ -1,13 +1,10 @@
 cmake_minimum_required (VERSION 2.6)
 project (CHOCOC)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -pedantic -Wno-long-long")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -Wextra -Weffc++ -pedantic -Wold-style-cast")
 
-#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
-
-#add_subdirectory (memory)
-#add_SUBDIRECTory (solver)
-#add_subdirectory (variable)
-#add_subdirectory (constraints)
+find_package( Boost REQUIRED COMPONENTS signals)
+link_directories ( ${Boost_LIBRARY_DIRS} )
+include_directories ( ${Boost_INCLUDE_DIRS} )
 
 ADD_LIBRARY(choco
     memory/environment.cc
